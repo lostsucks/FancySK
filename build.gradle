@@ -8,6 +8,10 @@ version = '1.0'
 repositories {
     mavenCentral()
     maven {
+        name = 'skriptlang-repo'
+        url = 'https://repo.skriptlang.org/releases'
+    }
+    maven {
         name = "papermc-repo"
         url = "https://repo.papermc.io/repository/maven-public/"
     }
@@ -15,10 +19,16 @@ repositories {
         name = "sonatype"
         url = "https://oss.sonatype.org/content/groups/public/"
     }
+    maven {
+        url = "https://repo.fancyplugins.de/releases"
+    }
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.21.3-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT")
+    compileOnly("de.oliver:FancyNpcs:2.4.1")
+    compileOnly("de.oliver:FancyHolograms:2.4.1")
+    compileOnly("com.github.SkriptLang:Skript:2.9.5")
 }
 
 def targetJavaVersion = 21
@@ -43,7 +53,7 @@ processResources {
     def props = [version: version]
     inputs.properties props
     filteringCharset 'UTF-8'
-    filesMatching('plugin.yml') {
+    filesMatching('paper-plugin.yml') {
         expand props
     }
 }
