@@ -1,0 +1,6 @@
+name: FancySK
+version: '1.0'
+main: me.lostmatter.fancySK.FancySK
+api-version: '1.21'
+authors: [ lostmatter ]
+description: FancyNPCs & FancyHolograms Skript Integration.
