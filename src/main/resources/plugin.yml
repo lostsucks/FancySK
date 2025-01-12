@@ -4,3 +4,5 @@ main: me.lostmatter.fancySK.FancySK
 api-version: '1.21'
 authors: [ lostmatter ]
 description: FancyNPCs & FancyHolograms Skript Integration.
+depend: [ Skript ]
+softdepend: [ FancyNpcs, FancyHolograms ]
