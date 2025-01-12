@@ -15,7 +15,8 @@ public class EffSetNPCSkin extends Effect {
 
     static {
         Skript.registerEffect(EffSetNPCSkin.class,
-                "set [the] npc skin of %string% to %string%"
+                "set [the] npc skin of %string% to %string%",
+                "set skin of npc %string% to %string%"
         );
     }
 

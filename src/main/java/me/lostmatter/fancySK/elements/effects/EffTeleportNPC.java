@@ -15,7 +15,7 @@ public class EffTeleportNPC extends Effect {
 
     static {
         Skript.registerEffect(EffTeleportNPC.class,
-                "teleport npc %string% to %location%"
+                "teleport [the] npc [named] %string% to %location%"
         );
     }
 

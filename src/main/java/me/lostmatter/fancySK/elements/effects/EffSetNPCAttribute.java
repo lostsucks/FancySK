@@ -16,7 +16,8 @@ public class EffSetNPCAttribute extends Effect {
 
     static {
         Skript.registerEffect(EffSetNPCAttribute.class,
-                "set [the] npc attribute %string% of %string% to %string%"
+                "set [the] npc attribute %string% of %string% to %string%",
+                "set [the] attribute %string% of npc [named] %string% to %string%"
         );
     }
 
