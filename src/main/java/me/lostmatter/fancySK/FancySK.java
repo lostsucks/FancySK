@@ -1,17 +1,35 @@
 package me.lostmatter.fancySK;
 
+import ch.njol.skript.Skript;
+import ch.njol.skript.SkriptAddon;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.io.IOException;
 
 public final class FancySK extends JavaPlugin {
 
+    public static FancySK instance;
+    SkriptAddon addon;
+
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        instance = this;
+        addon = Skript.registerAddon(this);
+        try { // In the elements package, we have the effects, expressions, and conditions packages
+            addon.loadClasses("me.lostmatter.fancySK.elements", "effects", "expressions", "conditions");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        getLogger().info("FancySK has been enabled!");
     }
 
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
+    public FancySK getInstance() {
+        return instance;
     }
+
+    public SkriptAddon getAddon() {
+        return addon;
+    }
+
 }
