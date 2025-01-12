@@ -31,6 +31,7 @@ public class EffSetNPCDisplayName extends Effect {
 
     @Override
     protected void execute(@NotNull Event event) {
+
         Npc npc = FancyNpcsPlugin.get().getNpcManager().getNpc(targetNpcExpression.getSingle(event));
         if (npc == null) return;
         npc.getData().setDisplayName(displayNameExpression.getSingle(event));
@@ -39,7 +40,7 @@ public class EffSetNPCDisplayName extends Effect {
     }
 
     @Override
-    public @NotNull String toString(@NotNull Event event, boolean b) {
+    public @NotNull String toString(Event event, boolean b) {
         return "set " + targetNpcExpression.toString(event, b) + "'s display name to " + displayNameExpression.toString(event, b);
     }
 
