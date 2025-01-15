@@ -48,7 +48,7 @@ public class EffSetNPCSkin extends Effect {
     }
 
     @Override
-    public @NotNull String toString(@NotNull Event event, boolean b) {
+    public @NotNull String toString(Event event, boolean b) {
         return "set " + targetNpcExpression.toString(event, b) + "'s skin to " + skinExpression.toString(event, b);
     }
 
