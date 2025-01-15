@@ -16,7 +16,7 @@ public class EffSetNPCSkin extends Effect {
     static {
         Skript.registerEffect(EffSetNPCSkin.class,
                 "set [the] npc skin of %string% to %string%",
-                "set skin of npc %string% to %string%"
+                "set [the] skin of npc [named] %string% to %string%"
         );
     }
 
@@ -35,7 +35,11 @@ public class EffSetNPCSkin extends Effect {
     protected void execute(@NotNull Event event) {
         Npc npc = FancyNpcsPlugin.get().getNpcManager().getNpc(targetNpcExpression.getSingle(event));
         if (npc == null) return;
-        SkinFetcher.SkinData skinData = new SkinFetcher.SkinData(skinExpression.getSingle(event), null, null);
+
+        String skin = skinExpression.getSingle(event);
+        if (skin == null) return;
+
+        SkinFetcher.SkinData skinData = new SkinFetcher.SkinData(skin, null, null);
         npc.getData().setSkin(skinData);
 
         npc.removeForAll();
