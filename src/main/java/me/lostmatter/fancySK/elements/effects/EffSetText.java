@@ -39,9 +39,13 @@ public class EffSetText extends Effect {
     protected void execute(@NotNull Event event) {
         HologramManager manager = FancyHologramsPlugin.get().getHologramManager();
         Hologram hologram = manager.getHologram(targetNpcExpression.getSingle(event)).orElse(null);
+        if (hologram == null) return;
+
+        String text = textExpression.getSingle(event);
+        if (text == null) return;
 
         TextHologramData hologramData = (TextHologramData) hologram.getData();
-        hologramData.setText(List.of(textExpression.getSingle(event)));
+        hologramData.setText(List.of(text));
 
         hologram.forceUpdate();
         for (Player player : Bukkit.getOnlinePlayers()) {
