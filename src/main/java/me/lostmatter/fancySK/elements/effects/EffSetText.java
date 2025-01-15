@@ -54,7 +54,7 @@ public class EffSetText extends Effect {
     }
 
     @Override
-    public @NotNull String toString(@NotNull Event event, boolean b) {
+    public @NotNull String toString(Event event, boolean b) {
         return "set text of hologram " + targetNpcExpression.toString(event, b) + " to " + textExpression.toString(event, b);
     }
 }
