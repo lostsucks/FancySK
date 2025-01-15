@@ -15,7 +15,7 @@ public final class FancySK extends JavaPlugin {
     public void onEnable() {
         instance = this;
         addon = Skript.registerAddon(this);
-        try { // In the elements package, we have the effects, expressions, and conditions packages
+        try {
             addon.loadClasses("me.lostmatter.fancySK.elements", "effects", "expressions", "conditions");
         } catch (IOException e) {
             e.printStackTrace();
