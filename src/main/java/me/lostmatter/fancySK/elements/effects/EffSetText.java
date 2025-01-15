@@ -20,7 +20,7 @@ public class EffSetText extends Effect {
 
     static {
         Skript.registerEffect(EffSetText.class,
-                "set text of holo[gram] [named] %string% to %string%"
+                "set text of [the] holo[gram] [named] %string% to %string%"
         );
     }
 

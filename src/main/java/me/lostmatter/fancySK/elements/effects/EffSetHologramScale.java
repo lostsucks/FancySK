@@ -17,7 +17,7 @@ public class EffSetHologramScale extends Effect {
 
     static {
         Skript.registerEffect(EffSetHologramScale.class,
-                "set scale of hologram [named] %string% to %number%"
+                "set [the] scale of holo[gram] [named] %string% to %number%"
         );
     }
 

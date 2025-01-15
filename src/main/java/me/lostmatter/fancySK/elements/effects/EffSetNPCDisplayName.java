@@ -15,7 +15,7 @@ public class EffSetNPCDisplayName extends Effect {
     static {
         Skript.registerEffect(EffSetNPCDisplayName.class,
                 "set %string%'s npc [display] name to %string%",
-                "set [the] display name of npc %string% to %string%"
+                "set [the] [display] name of [the] npc [named] %string% to %string%"
         );
     }
 

@@ -17,7 +17,7 @@ public class EffTeleportHologram extends Effect {
 
     static {
         Skript.registerEffect(EffTeleportHologram.class,
-                "teleport hologram %string% to %location%"
+                "teleport [the] holo[gram] [named] %string% to %location%"
         );
     }
 
