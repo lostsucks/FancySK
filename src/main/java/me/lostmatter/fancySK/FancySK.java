@@ -16,7 +16,7 @@ public final class FancySK extends JavaPlugin {
         instance = this;
         addon = Skript.registerAddon(this);
         try {
-            addon.loadClasses("me.lostmatter.fancySK.elements", "effects", "expressions", "conditions");
+            addon.loadClasses("me.lostmatter.fancySK.elements", "effects", "expressions", "conditions", "events");
         } catch (IOException e) {
             e.printStackTrace();
         }
