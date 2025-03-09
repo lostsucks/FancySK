@@ -14,7 +14,6 @@ public class EffSetNPCScale extends Effect {
 
     static {
         Skript.registerEffect(EffSetNPCScale.class,
-                "set [npc] [named] %string%'s [npc] scale to %number%",
                 "set [the] scale of [the] npc [named] %string% to %number%"
         );
     }
