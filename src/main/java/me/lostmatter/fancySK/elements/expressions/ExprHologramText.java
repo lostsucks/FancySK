@@ -13,8 +13,6 @@ import de.oliver.fancyholograms.api.hologram.Hologram;
 import org.bukkit.event.Event;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
-
 public class ExprHologramText extends SimpleExpression<String> {
 
     static {
