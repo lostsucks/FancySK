@@ -7,7 +7,7 @@ import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
 import de.oliver.fancynpcs.api.FancyNpcsPlugin;
 import de.oliver.fancynpcs.api.Npc;
-import de.oliver.fancynpcs.api.utils.SkinFetcher;
+import de.oliver.fancynpcs.api.skins.SkinData;
 import org.bukkit.event.Event;
 import org.jetbrains.annotations.NotNull;
 
@@ -38,8 +38,7 @@ public class EffSetNPCSkin extends Effect {
         String skin = skinExpression.getSingle(event);
         if (skin == null) return;
 
-        SkinFetcher.SkinData skinData = new SkinFetcher.SkinData(skin, null, null);
-        npc.getData().setSkin(skinData);
+        npc.getData().setSkin(skin, SkinData.SkinVariant.AUTO);
 
         npc.removeForAll();
         npc.create();

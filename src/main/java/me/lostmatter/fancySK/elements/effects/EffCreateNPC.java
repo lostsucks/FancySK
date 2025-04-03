@@ -8,7 +8,6 @@ import ch.njol.util.Kleenean;
 import de.oliver.fancynpcs.api.FancyNpcsPlugin;
 import de.oliver.fancynpcs.api.Npc;
 import de.oliver.fancynpcs.api.NpcData;
-import de.oliver.fancynpcs.api.utils.SkinFetcher;
 import org.bukkit.Location;
 import org.bukkit.event.Event;
 import org.jetbrains.annotations.NotNull;
@@ -35,9 +34,8 @@ public class EffCreateNPC extends Effect {
     @Override
     protected void execute(@NotNull Event event) { // NpcData(name, creatorUUID, location)
         NpcData data = new NpcData(npcNameExpression.getSingle(event), null, locationExpression.getSingle(event));
-        SkinFetcher.SkinData skin = new SkinFetcher.SkinData("Steve", null, null);
 
-        data.setSkin(skin);
+        data.setSkin("Steve"); // default skin
         data.setDisplayName(npcNameExpression.getSingle(event));
 
         Npc npc = FancyNpcsPlugin.get().getNpcAdapter().apply(data);
