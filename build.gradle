@@ -26,8 +26,8 @@ repositories {
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT")
-    compileOnly("de.oliver:FancyNpcs:2.4.1")
-    compileOnly("de.oliver:FancyHolograms:2.4.1")
+    compileOnly("de.oliver:FancyNpcs:2.4.4")
+    compileOnly("de.oliver:FancyHolograms:2.4.4")
     compileOnly("com.github.SkriptLang:Skript:2.9.5")
 }
 
