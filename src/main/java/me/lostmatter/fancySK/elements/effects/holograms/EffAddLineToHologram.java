@@ -1,4 +1,4 @@
-package me.lostmatter.fancySK.elements.effects;
+package me.lostmatter.fancySK.elements.effects.holograms;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Effect;
@@ -12,40 +12,37 @@ import de.oliver.fancyholograms.api.hologram.Hologram;
 import org.bukkit.event.Event;
 import org.jetbrains.annotations.NotNull;
 
-public class EffRemoveLine extends Effect {
+public class EffAddLineToHologram extends Effect {
 
     static {
-        Skript.registerEffect(EffRemoveLine.class,
-                "remove line %integer% from %string%"
+        Skript.registerEffect(EffAddLineToHologram.class,
+                "add line %string% to %hologram%"
         );
     }
 
-    private Expression<Integer> lineNumberExpression;
-    private Expression<String> textExpression;
+    private Expression<String> lineExpression;
+    private Expression<String> hologramExpression;
 
     @Override
     @SuppressWarnings("unchecked")
     public boolean init(Expression<?>[] exprs, int matchedPattern, @NotNull Kleenean isDelayed, @NotNull SkriptParser.ParseResult parseResult) {
-        lineNumberExpression = (Expression<Integer>) exprs[0];
-        textExpression = (Expression<String>) exprs[1];
+        lineExpression = (Expression<String>) exprs[0];
+        hologramExpression = (Expression<String>) exprs[1];
         return true;
     }
 
     @Override
     protected void execute(@NotNull Event event) {
         HologramManager manager = FancyHologramsPlugin.get().getHologramManager();
-        Hologram hologram = manager.getHologram(textExpression.getSingle(event)).orElse(null);
-        if (hologram == null) return;
+        Hologram hologram = manager.getHologram(hologramExpression.getSingle(event)).orElse(null);
 
         TextHologramData hologramData = (TextHologramData) hologram.getData();
-        hologramData.removeLine(lineNumberExpression.getSingle(event));
-
-        hologram.forceUpdate();
+        hologramData.addLine(lineExpression.getSingle(event));
     }
 
     @Override
     public @NotNull String toString(@NotNull Event event, boolean b) {
-        return "remove line " + lineNumberExpression.toString(event, b) + " from " + textExpression.toString(event, b);
+        return "add line " + lineExpression.toString(event, b) + " to hologram " + hologramExpression.toString(event, b);
     }
 
 }

@@ -1,4 +1,4 @@
-package me.lostmatter.fancySK.elements.effects;
+package me.lostmatter.fancySK.elements.effects.npcs;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Effect;

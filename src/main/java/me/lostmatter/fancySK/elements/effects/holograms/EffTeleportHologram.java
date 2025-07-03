@@ -1,4 +1,4 @@
-package me.lostmatter.fancySK.elements.effects;
+package me.lostmatter.fancySK.elements.effects.holograms;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Effect;
@@ -9,52 +9,44 @@ import de.oliver.fancyholograms.api.FancyHologramsPlugin;
 import de.oliver.fancyholograms.api.HologramManager;
 import de.oliver.fancyholograms.api.data.TextHologramData;
 import de.oliver.fancyholograms.api.hologram.Hologram;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
+import org.bukkit.Location;
 import org.bukkit.event.Event;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
-
-public class EffSetText extends Effect {
+public class EffTeleportHologram extends Effect {
 
     static {
-        Skript.registerEffect(EffSetText.class,
-                "set text of [the] holo[gram] [named] %string% to %string%"
+        Skript.registerEffect(EffTeleportHologram.class,
+                "teleport %hologram% to %location%"
         );
     }
 
-    private Expression<String> targetNpcExpression;
-    private Expression<String> textExpression;
+    private Expression<String> hologramExpression;
+    private Expression<Location> locationExpression;
 
     @Override
     @SuppressWarnings("unchecked")
     public boolean init(Expression<?>[] exprs, int matchedPattern, @NotNull Kleenean isDelayed, @NotNull SkriptParser.ParseResult parseResult) {
-        targetNpcExpression = (Expression<String>) exprs[0];
-        textExpression = (Expression<String>) exprs[1];
+        hologramExpression = (Expression<String>) exprs[0];
+        locationExpression = (Expression<Location>) exprs[1];
         return true;
     }
 
     @Override
     protected void execute(@NotNull Event event) {
         HologramManager manager = FancyHologramsPlugin.get().getHologramManager();
-        Hologram hologram = manager.getHologram(targetNpcExpression.getSingle(event)).orElse(null);
+        Hologram hologram = manager.getHologram(hologramExpression.getSingle(event)).orElse(null);
         if (hologram == null) return;
 
-        String text = textExpression.getSingle(event);
-        if (text == null) return;
-
         TextHologramData hologramData = (TextHologramData) hologram.getData();
-        hologramData.setText(List.of(text));
+        hologramData.setLocation(locationExpression.getSingle(event));
 
         hologram.forceUpdate();
-        for (Player player : Bukkit.getOnlinePlayers()) {
-            hologram.refreshHologram(player);
-        }
     }
 
     @Override
-    public @NotNull String toString(Event event, boolean b) {
-        return "set text of hologram " + targetNpcExpression.toString(event, b) + " to " + textExpression.toString(event, b);
+    public @NotNull String toString(@NotNull Event event, boolean b) {
+        return "teleport hologram " + hologramExpression.toString(event, b) + " to " + locationExpression.toString(event, b);
     }
+
 }

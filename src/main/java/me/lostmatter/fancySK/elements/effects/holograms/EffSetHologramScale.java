@@ -1,4 +1,4 @@
-package me.lostmatter.fancySK.elements.effects;
+package me.lostmatter.fancySK.elements.effects.holograms;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Effect;
@@ -17,18 +17,18 @@ public class EffSetHologramScale extends Effect {
 
     static {
         Skript.registerEffect(EffSetHologramScale.class,
-                "set [the] scale of holo[gram] [named] %string% to %number%"
+                "set [the] scale of %hologram% to %vector%"
         );
     }
 
     private Expression<String> hologramExpression;
-    private Expression<Number> scaleExpression;
+    private Expression<Vector3f> vector3fExpression;
 
     @Override
     @SuppressWarnings("unchecked")
     public boolean init(Expression<?>[] exprs, int matchedPattern, @NotNull Kleenean isDelayed, @NotNull SkriptParser.ParseResult parseResult) {
         hologramExpression = (Expression<String>) exprs[0];
-        scaleExpression = (Expression<Number>) exprs[1];
+        vector3fExpression = (Expression<Vector3f>) exprs[1];
         return true;
     }
 
@@ -38,12 +38,12 @@ public class EffSetHologramScale extends Effect {
         Hologram hologram = manager.getHologram(hologramExpression.getSingle(event)).orElse(null);
 
         TextHologramData hologramData = (TextHologramData) hologram.getData();
-        hologramData.setScale(new Vector3f(scaleExpression.getSingle(event).floatValue(), scaleExpression.getSingle(event).floatValue(), scaleExpression.getSingle(event).floatValue()));
+        hologramData.setScale(vector3fExpression.getSingle(event));
     }
 
     @Override
     public @NotNull String toString(@NotNull Event event, boolean b) {
-        return "set scale of hologram " + hologramExpression.toString(event, b) + " to " + scaleExpression.toString(event, b);
+        return "set scale of hologram " + hologramExpression.toString(event, b) + " to " + vector3fExpression.toString(event, b);
     }
 
 }

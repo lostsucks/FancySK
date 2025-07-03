@@ -20,7 +20,7 @@ public final class FancySK extends JavaPlugin {
         instance = this;
         addon = Skript.registerAddon(this);
         try {
-            addon.loadClasses("me.lostmatter.fancySK.elements", "effects", "expressions", "conditions", "events");
+            addon.loadClasses("me.lostmatter.fancySK.elements", "effects", "expressions", "sections");
         } catch (IOException e) {
             getLogger().severe("Failed to load classes: " + e.getMessage());
             Bukkit.getPluginManager().disablePlugin(this);

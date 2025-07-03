@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'me.lostmatter'
-version = '1.1'
+version = '1.2'
 
 repositories {
     mavenCentral()
@@ -20,15 +20,15 @@ repositories {
         url = "https://oss.sonatype.org/content/groups/public/"
     }
     maven {
-        url = "https://repo.fancyplugins.de/releases"
+        url = "https://repo.fancyinnovations.com/releases"
     }
 }
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT")
-    compileOnly("de.oliver:FancyNpcs:2.4.4")
-    compileOnly("de.oliver:FancyHolograms:2.4.2")
-    compileOnly("com.github.SkriptLang:Skript:2.9.5")
+    compileOnly("de.oliver:FancyNpcs:2.6.0")
+    compileOnly("de.oliver:FancyHolograms:2.6.0")
+    compileOnly("com.github.SkriptLang:Skript:2.11.2")
 }
 
 def targetJavaVersion = 21
